@@ -12,7 +12,7 @@ int main(void)
 	{
 		prompter_display();
 		read_command(command, sizeof(command));
-		/*executer_command(command);*/
+		executer_command(command);
 		executer_arguments(arguments);
 	}
 	return (0);
