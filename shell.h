@@ -6,6 +6,7 @@
 #include <string.h>/*this will help in length*/
 #include <stdio.h>
 #include <sys/wait.h>
+#include <errno.h>
 void prompter_display(void);
 void printer(const char *string);
 void read_command(char *command, size_t size);

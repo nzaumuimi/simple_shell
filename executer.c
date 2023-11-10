@@ -16,8 +16,10 @@ void executer_command(const char *command)
 	}
 	else if (child_pid == 0)/*creation of child success*/
 	{
-		execlp(command, command, (char *) NULL);
-		perror("execlp");
+		char *args[] = {(char* ) command, NULL};
+
+		execvp(args[0], args);
+		execvp("execvp");
 		exit(EXIT_FAILURE);
 	}
 	else/*this is executed when child was a success and its finished*/
