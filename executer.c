@@ -16,8 +16,18 @@ void executer_command(const char *command)
 	}
 	else if (child_process == 0)/*creation of child success*/
 	{
-		execlp(command, command, (char *) NULL);
-		perror("execlp");
+		char **args = malloc(2 * sizeof(char *));
+		if (args == NULL)
+		{
+			perror("malloc");
+			exit(EXIT_FAILURE);
+		}
+		args[0] = strdup(command);
+		args[1] = NULL;
+		execvp(command, args);
+		perror("execvp");
+		free(args[0]);
+		free(args);
 		exit(EXIT_FAILURE);
 	}
 	else/*this is executed when child was a success and its finished*/
